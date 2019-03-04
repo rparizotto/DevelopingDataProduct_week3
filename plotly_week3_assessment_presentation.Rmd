@@ -1,0 +1,34 @@
+---
+title: "Plotly - WorldPhones dataset sample"
+author: "Rodrigo Parizotto"
+date: "March 4, 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## WorldPhones dataset - North America vs Europe 
+Using plotly to compare 'AT&T (1961) The World's Telephones' 
+
+Code:
+```{r echo = TRUE, warning=FALSE, message=FALSE }
+library(plotly)
+data("WorldPhones")
+df <- data.frame(WorldPhones)
+
+x <- rownames(df)
+p <- plot_ly(df, x = ~x, y = ~N.Amer, name = 'N.Amer', 
+             type = 'scatter', mode = 'lines+markers') %>%
+  add_trace(y = ~Europe, name = 'Europe', mode = 'lines+markers')
+
+
+```
+
+## Plot using plotly
+```{r echo = TRUE, warning=FALSE, message=FALSE }
+p
+```
+
+## Thanks
